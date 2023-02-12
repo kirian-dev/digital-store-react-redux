@@ -2,15 +2,11 @@ import { lazyImport } from '@/shared/helpers/lazyImport';
 import { Landing } from '@/features/landing';
 import { PageNotFound } from '@/features/not-found';
 
-const { ProductsRoutes } = lazyImport(
-	() => import('@/features/products/routes'),
-	'ProductsRoutes'
-);
+const { ProductsRoutes } = lazyImport(() => import('@/features/products'), 'ProductsRoutes');
 
-const { Cart } = lazyImport(
-	() => import('@/features/cart'),
-	'Cart'
-);
+const { AuthRoutes } = lazyImport(() => import('@/features/auth'), 'AuthRoutes');
+
+const { Cart } = lazyImport(() => import('@/features/cart'), 'Cart');
 export const commonRoutes = [
   {
     path: '/',
@@ -23,6 +19,10 @@ export const commonRoutes = [
   {
     path: '/cart/*',
     element: <Cart />,
+  },
+  {
+    path: '/auth/*',
+    element: <AuthRoutes />,
   },
   {
     path: '*',

@@ -5,9 +5,10 @@ import logo from '@/assets/images/logo.png';
 import './Header.scss';
 import { menuList } from './menu-list';
 import { useTypedSelector } from '@/shared/hooks/useTypedSelector';
+import { Dropdown } from '@/components/ui/dropdown';
 
 export const Header: FC = () => {
-  const items = useTypedSelector(state => state.cart.items)
+  const items = useTypedSelector((state) => state.cart.items);
   return (
     <header className="header">
       <div>
@@ -27,9 +28,23 @@ export const Header: FC = () => {
           <AiOutlineShopping />
           <span className="header__cart-item-qty">{items.length}</span>
         </Link>
-        <button type="button" className="header__cart-icon">
-          <AiOutlineUser />
-        </button>
+        <Dropdown
+          toggleText={
+            <button type="button" className="header__cart-icon relative">
+              <AiOutlineUser />
+            </button>
+          }
+          dropdownContent={
+            <>
+              <div className="py-3 w-24  rounded-md hover:bg-slate-200 text-center">
+                <Link to="/auth/login">Login</Link>
+              </div>
+              <div className="py-3 w-24  rounded-md hover:bg-slate-200 text-center">
+                <Link to="/auth/register">Sign up</Link>
+              </div>
+            </>
+          }
+        />
       </div>
     </header>
   );
