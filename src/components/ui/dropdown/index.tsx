@@ -22,7 +22,7 @@ export const Dropdown: FC<DropdownProps> = ({ toggleText, dropdownContent }) => 
       {isOpen && (
         <div
           ref={dropdownRef}
-          className="absolute bg-white py-2 mt-2 rounded shadow right-0 w-24 top-10"
+          className="absolute bg-white py-2 mt-2 rounded shadow right-0 w-24 top-10 z-50"
           onClick={toggleClick}
         >
           {dropdownContent}

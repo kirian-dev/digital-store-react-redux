@@ -2,7 +2,13 @@ import { FC } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { GoogleButton } from './GoogleButton';
-export const RegisterForm: FC = () => {
+import { useAction } from '@/shared/hooks/useAction';
+interface RegisterFormProps {
+  onSuccess: () => void;
+}
+
+export const RegisterForm: FC<RegisterFormProps> = ({ onSuccess }) => {
+  const { register } = useAction();
   return (
     <div className="max-w-lg  mx-auto mt-16">
       <Formik
@@ -13,8 +19,9 @@ export const RegisterForm: FC = () => {
             .min(6, 'Password must be at least 6 characters')
             .required('Password is required'),
         })}
-        onSubmit={(values) => {
-          // Your submit function here
+        onSubmit={async (values) => {
+          await register(values);
+          await onSuccess();
         }}
       >
         {({ isSubmitting }) => (
@@ -57,7 +64,7 @@ export const RegisterForm: FC = () => {
               </button>
             </div>
             <div className="px-4 w-full mt-4">
-              <GoogleButton text='Sign up witn Google' />
+              <GoogleButton text="Sign up witn Google" />
             </div>
           </Form>
         )}

@@ -33,7 +33,7 @@ export const Cart: FC = () => {
       <div className="mt-10">
         <h2 className="text-xl font-bold">Total: ${total.toFixed(2)}</h2>
         <button className="bg-green-500 text-white py-2 px-4 rounded mt-5">
-          Proceed to Payment
+          Pay now
         </button>
       </div>
     </div>

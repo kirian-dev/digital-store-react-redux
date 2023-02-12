@@ -1,16 +1,19 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { AiOutlineShopping, AiOutlineUser } from 'react-icons/ai';
-import logo from '@/assets/images/logo.png';
-import './Header.scss';
 import { menuList } from './menu-list';
 import { useTypedSelector } from '@/shared/hooks/useTypedSelector';
 import { Dropdown } from '@/components/ui/dropdown';
+import { useAuth } from '@/shared/hooks/useAuth';
+import logo from '@/assets/images/logo.png';
+import { AiOutlineShopping, AiOutlineUser } from 'react-icons/ai';
+import './Header.scss';
+import { Logout } from './Logout';
 
 export const Header: FC = () => {
   const items = useTypedSelector((state) => state.cart.items);
+  const { user } = useAuth();
   return (
-    <header className="header">
+    <header className="header z-50">
       <div>
         <Link to="/" className="">
           <img src={logo} alt="" className="header__icon" />
@@ -30,19 +33,28 @@ export const Header: FC = () => {
         </Link>
         <Dropdown
           toggleText={
-            <button type="button" className="header__cart-icon relative">
+            <div className="header__cart-icon relative">
               <AiOutlineUser />
-            </button>
+            </div>
           }
           dropdownContent={
-            <>
-              <div className="py-3 w-24  rounded-md hover:bg-slate-200 text-center">
-                <Link to="/auth/login">Login</Link>
-              </div>
-              <div className="py-3 w-24  rounded-md hover:bg-slate-200 text-center">
-                <Link to="/auth/register">Sign up</Link>
-              </div>
-            </>
+            !user ? (
+              <>
+                <div className="py-3 w-24  rounded-md hover:bg-slate-200 text-center">
+                  <Link to="/auth/login">Login</Link>
+                </div>
+                <div className="py-3 w-24  rounded-md hover:bg-slate-200 text-center">
+                  <Link to="/auth/register">Sign up</Link>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="py-3 w-24  rounded-md hover:bg-slate-200 text-center">
+                  <Link to="/my/profile">Profile</Link>
+                </div>
+                <Logout />
+              </>
+            )
           }
         />
       </div>
