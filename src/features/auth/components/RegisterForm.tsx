@@ -64,7 +64,7 @@ export const RegisterForm: FC<RegisterFormProps> = ({ onSuccess }) => {
               </button>
             </div>
             <div className="px-4 w-full mt-4">
-              <GoogleButton text="Sign up witn Google" />
+              <GoogleButton text="Sign up witn Google" onSuccess={onSuccess} />
             </div>
           </Form>
         )}

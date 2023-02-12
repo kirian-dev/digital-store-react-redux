@@ -1,3 +1,4 @@
+import { removeFromLocalStorage } from './../../shared/helpers/removeFromLocalStorage';
 import { setDoc, doc } from 'firebase/firestore';
 import {
   createUserWithEmailAndPassword,
@@ -42,11 +43,6 @@ export class AuthService {
     return user;
   }
   public static async logout() {
-    const persistRoot = localStorage.getItem('persist:root');
-    if (persistRoot) {
-      const root = JSON.parse(persistRoot);
-      delete root.user;
-      localStorage.setItem('persist:root', JSON.stringify(root));
-    }
+    removeFromLocalStorage('user');
   }
 }

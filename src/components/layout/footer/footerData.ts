@@ -12,8 +12,3 @@ export const footerDataUser: { title: string; link?: string }[] = [
 
 export const footerDataResources: string[] = ['Documentation', 'Tutorials', 'Support'];
 export const footerDataProduct: string[] = ['Great Deals', 'Analytics', 'Mobile'];
-
-export const footerDataContact: string[] = [
-  'XXX XXX Ukraine, Kyiv T.Shevchenko 4',
-  'contact@gmail.com',
-];

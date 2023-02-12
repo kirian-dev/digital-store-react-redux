@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import { useProduct } from '../hooks/useProduct';
 import { useAction } from '@/shared/hooks/useAction';
+import { IProduct } from '@/types/product.interface';
+import { toastr } from 'react-redux-toastr';
 
 export const ProductDetails: FC = () => {
   const product = useProduct();
@@ -8,6 +10,11 @@ export const ProductDetails: FC = () => {
   if (!product) {
     return <h1 className="text-3xl text-center w-full mt-10">Product not found</h1>;
   }
+
+  const handleAddProductToCart = (product: IProduct) => {
+    addToCart(product);
+    toastr.success('Product', 'Product added successfully');
+  };
   return (
     <section className="text-gray-700 body-font overflow-hidden h-screen">
       <div className="container px-5 py-24 mx-auto">
@@ -42,7 +49,10 @@ export const ProductDetails: FC = () => {
             <p className="leading-relaxed">{product.description}</p>
             <div className="flex mt-10">
               <span className="title-font font-medium text-2xl text-gray-900">$58.00</span>
-              <button className="flex ml-auto text-white bg-orange-600 border-0 py-2 px-6 focus:outline-none hover:bg-orange-700 rounded-2xl" onClick={() => addToCart(product)}>
+              <button
+                className="flex ml-auto text-white bg-orange-600 border-0 py-2 px-6 focus:outline-none hover:bg-orange-700 rounded-2xl"
+                onClick={() => handleAddProductToCart(product)}
+              >
                 Buy
               </button>
             </div>

@@ -65,7 +65,7 @@ export const LoginForm: FC<RegisterFormProps> = ({ onSuccess }) => {
               </button>
             </div>
             <div className="px-4 w-full mt-4">
-              <GoogleButton text="Login with Google" />
+              <GoogleButton text="Login with Google" onSuccess={onSuccess}/>
             </div>
           </Form>
         )}
