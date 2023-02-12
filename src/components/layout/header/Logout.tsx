@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from 'react';
+import { FC } from 'react';
 import { useAction } from '@/shared/hooks/useAction';
 
 export const Logout: FC = () => {

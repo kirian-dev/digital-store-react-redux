@@ -1,22 +1,19 @@
 import * as React from 'react';
+import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { ErrorBoundary } from 'react-error-boundary';
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router } from 'react-router-dom';
-import ReduxToastr from 'react-redux-toastr';
-import { PersistGate } from 'redux-persist/integration/react';
+import { ToastContainer } from 'react-toastify';
 import { Loader } from '@/components/ui/loader';
 import { persistor, store } from '../store';
+import 'react-toastify/dist/ReactToastify.css';
+
 const ErrorFallback = () => {
   return (
-    <div
-      className=""
-    >
+    <div className="">
       <h2 className="">Something went wrong..... </h2>
-      <button
-        className=""
-        onClick={() => window.location.assign(window.location.origin)}
-      >
+      <button className="" onClick={() => window.location.assign(window.location.origin)}>
         Reload page
       </button>
     </div>
@@ -29,13 +26,13 @@ interface MainProviderProps {
 
 export const MainProvider = ({ children }: MainProviderProps) => {
   return (
-    <React.Suspense fallback={<Loader />}>
+    <React.Suspense fallback={<Loader className="mb-20" />}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <HelmetProvider>
           <Provider store={store}>
-            <ReduxToastr />
             <PersistGate loading={null} persistor={persistor}>
               <Router>{children}</Router>
+              <ToastContainer />
             </PersistGate>
           </Provider>
         </HelmetProvider>

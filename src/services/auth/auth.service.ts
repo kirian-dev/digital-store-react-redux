@@ -1,4 +1,3 @@
-import { removeFromLocalStorage } from './../../shared/helpers/removeFromLocalStorage';
 import { setDoc, doc } from 'firebase/firestore';
 import {
   createUserWithEmailAndPassword,
@@ -6,6 +5,7 @@ import {
   signInWithPopup,
 } from 'firebase/auth';
 import { auth, db, provider } from '@/lib/firebase';
+import { removeFromLocalStorage } from '@/shared/helpers/removeFromLocalStorage';
 
 export class AuthService {
   public static async register(email: string, password: string) {
@@ -14,7 +14,7 @@ export class AuthService {
 
     await setDoc(doc(db, 'users', user.uid), {
       uid: user.uid,
-      displayName: user.displayName,
+      name: user.displayName,
       email: user.email,
     });
 
@@ -23,13 +23,7 @@ export class AuthService {
   public static async login(email: string, password: string) {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
-
-    await setDoc(doc(db, 'users', user.uid), {
-      uid: user.uid,
-      displayName: user.displayName,
-      email: user.email,
-    });
-
+    
     return user;
   }
   public static async googleSignIn() {
@@ -37,7 +31,7 @@ export class AuthService {
     const user = userCredential.user;
     await setDoc(doc(db, 'users', user.uid), {
       uid: user.uid,
-      displayName: user.displayName,
+      name: user.displayName,
       email: user.email,
     });
     return user;

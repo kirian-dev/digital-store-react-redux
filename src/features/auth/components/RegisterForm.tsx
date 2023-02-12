@@ -19,9 +19,9 @@ export const RegisterForm: FC<RegisterFormProps> = ({ onSuccess }) => {
             .min(6, 'Password must be at least 6 characters')
             .required('Password is required'),
         })}
-        onSubmit={async (values) => {
-          await register(values);
-          await onSuccess();
+        onSubmit={(values, { resetForm }) => {
+          register({ email: values.email, password: values.password, onSuccess });
+          resetForm();
         }}
       >
         {({ isSubmitting }) => (

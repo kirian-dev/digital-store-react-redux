@@ -1,38 +1,42 @@
+import { toastrSuccess, toastrError } from './../../../shared/helpers/toastify';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { toastr } from 'react-redux-toastr';
-import { IEmailPassword } from './user.interface';
+import { IAuth } from './user.interface';
 import { AuthService } from '@/services/auth/auth.service';
 
 export const register = createAsyncThunk(
   'auth/register',
-  async ({ email, password }: IEmailPassword) => {
+  async ({ email, password, onSuccess }: IAuth) => {
     try {
       const response = await AuthService.register(email, password);
-      toastr.success('Registration', 'Completed successfully');
-      console.log('response', response);
+      toastrSuccess('Registration completed successfully');
+      onSuccess();
       return response;
     } catch (error: any) {
-      toastr.error(error.customData._tokenResponse.error.message, 'Registration');
+      toastrError(`Register ${error.customData._tokenResponse.error.message}`);
     }
   }
 );
-
-export const login = createAsyncThunk('auth/login', async ({ email, password }: IEmailPassword) => {
-  try {
-    const response = await AuthService.login(email, password);
-    toastr.success('Login', 'Completed successfully');
-    return response;
-  } catch (error: any) {
-    toastr.error(error.customData._tokenResponse.error.message, 'Login');
+export const login = createAsyncThunk(
+  'auth/login',
+  async ({ email, password, onSuccess }: IAuth) => {
+    try {
+      const response = await AuthService.login(email, password);
+      toastrSuccess('Login completed successfully');
+      onSuccess();
+      return response;
+    } catch (error: any) {
+      toastrError(`Login ${error.customData._tokenResponse.error.message}`);
+    }
   }
-});
-export const googleSignIn = createAsyncThunk('auth/google', async () => {
+);
+export const googleSignIn = createAsyncThunk('auth/google', async (onSuccess: () => void) => {
   try {
     const response = await AuthService.googleSignIn();
-    toastr.success('Login', 'Completed successfully');
+    toastrSuccess('Login completed successfully');
+    onSuccess();
     return response;
   } catch (error: any) {
-    toastr.error(error.customData._tokenResponse.error.message, 'Google sign in');
+    toastrError(`Google sign in ${error.customData._tokenResponse.error.message}`);
   }
 });
 

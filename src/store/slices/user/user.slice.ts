@@ -17,7 +17,6 @@ export const slice = createSlice({
         state.isLoading = true;
       })
       .addCase(register.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.isLoading = false;
         if (payload) {
           state.user = {
@@ -63,7 +62,6 @@ export const slice = createSlice({
         state.user = null;
       })
       .addCase(logout.fulfilled, (state) => {
-        console.log('ssds');
         state.isLoading = false;
         state.user = null;
       });

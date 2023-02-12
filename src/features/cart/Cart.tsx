@@ -1,14 +1,14 @@
 import { FC, useState } from 'react';
-import { CartItem } from './components/CartItem';
-import { useTypedSelector } from '@/shared/hooks/useTypedSelector';
 import { Link } from 'react-router-dom';
-import { useAction } from '@/shared/hooks/useAction';
-import { toastr } from 'react-redux-toastr';
 import Confetti from 'react-confetti';
+import { CartItem } from './components/CartItem';
+import { Modal } from '@/components/ui/modal';
+import { useTypedSelector } from '@/shared/hooks/useTypedSelector';
+import { useAction } from '@/shared/hooks/useAction';
 import { useWindowSize } from '@/shared/hooks/useWindowSize';
 import { useAuth } from '@/shared/hooks/useAuth';
-import { Modal } from '@/components/ui/modal';
 import { removeFromLocalStorage } from '@/shared/helpers/removeFromLocalStorage';
+import { toastrSuccess } from '@/shared/helpers/toastify';
 
 export const Cart: FC = () => {
   const items = useTypedSelector((state) => state.cart.items);
@@ -23,7 +23,7 @@ export const Cart: FC = () => {
 
   const handleRemoveProduct = (id: string) => {
     removeItem(id);
-    toastr.success('Product', 'Product removed successfully');
+    toastrSuccess('Product removed successfully');
   };
 
   const handlePay = () => {
@@ -34,7 +34,7 @@ export const Cart: FC = () => {
       setTimeout(() => {
         removeFromLocalStorage('cart');
         window.location.assign('/products');
-      }, 10000);
+      }, 5000);
     }
   };
 

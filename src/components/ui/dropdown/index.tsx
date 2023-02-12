@@ -1,33 +1,34 @@
-import { FC, useState, ReactNode, useRef } from 'react';
-import { useOnClickOutside } from '@/shared/hooks/useOnClickOutside';
+import { FC, ReactNode } from 'react';
+
 interface DropdownProps {
   toggleText: string | ReactNode;
   dropdownContent: ReactNode;
+  isOpenDropdown: boolean;
+  setIsOpenDropdown: (value: boolean) => void;
 }
 
-export const Dropdown: FC<DropdownProps> = ({ toggleText, dropdownContent }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  
+export const Dropdown: FC<DropdownProps> = ({
+  toggleText,
+  dropdownContent,
+  isOpenDropdown,
+  setIsOpenDropdown,
+}) => {
   const toggleClick = () => {
-    setIsOpen(prev => !prev);
+    setIsOpenDropdown(!isOpenDropdown);
   };
-  useOnClickOutside(dropdownRef, toggleClick, isOpen);
 
   return (
     <div className="relative">
       <button type="button" className="header__cart-icon" onClick={toggleClick}>
         {toggleText}
       </button>
-      {isOpen && (
-        <div
-          ref={dropdownRef}
-          className="absolute bg-white py-2 mt-2 rounded shadow right-0 w-24 top-10 z-50"
-          onClick={toggleClick}
-        >
-          {dropdownContent}
-        </div>
-      )}
+      <div>
+        {isOpenDropdown && (
+          <div className="absolute bg-white py-2 mt-2 rounded shadow right-0 w-24 top-10 z-50">
+            {dropdownContent}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

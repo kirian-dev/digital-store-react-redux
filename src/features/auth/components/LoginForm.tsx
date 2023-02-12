@@ -9,7 +9,7 @@ interface RegisterFormProps {
 }
 
 export const LoginForm: FC<RegisterFormProps> = ({ onSuccess }) => {
-  const { login, googleSignIn} = useAction();
+  const { login } = useAction();
   return (
     <div className="max-w-lg  mx-auto mt-16">
       <Formik
@@ -20,9 +20,9 @@ export const LoginForm: FC<RegisterFormProps> = ({ onSuccess }) => {
             .min(6, 'Password must be at least 6 characters')
             .required('Password is required'),
         })}
-        onSubmit={async (values) => {
-          await login(values);
-          await onSuccess();
+        onSubmit={(values, { resetForm }) => {
+          login({ email: values.email, password: values.password, onSuccess });
+          resetForm();
         }}
       >
         {({ isSubmitting }) => (
@@ -65,7 +65,7 @@ export const LoginForm: FC<RegisterFormProps> = ({ onSuccess }) => {
               </button>
             </div>
             <div className="px-4 w-full mt-4">
-              <GoogleButton text="Login with Google" onSuccess={onSuccess}/>
+              <GoogleButton text="Login with Google" onSuccess={onSuccess} />
             </div>
           </Form>
         )}

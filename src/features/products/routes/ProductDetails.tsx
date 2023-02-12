@@ -1,8 +1,9 @@
 import { FC } from 'react';
+import { motion } from 'framer-motion';
 import { useProduct } from '../hooks/useProduct';
 import { useAction } from '@/shared/hooks/useAction';
 import { IProduct } from '@/types/product.interface';
-import { toastr } from 'react-redux-toastr';
+import { toastrSuccess } from '@/shared/helpers/toastify';
 
 export const ProductDetails: FC = () => {
   const product = useProduct();
@@ -13,10 +14,15 @@ export const ProductDetails: FC = () => {
 
   const handleAddProductToCart = (product: IProduct) => {
     addToCart(product);
-    toastr.success('Product', 'Product added successfully');
+    toastrSuccess('Product added successfully');
   };
   return (
-    <section className="text-gray-700 body-font overflow-hidden h-screen">
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="text-gray-700 body-font overflow-hidden h-screen"
+    >
       <div className="container px-5 py-24 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <img
@@ -59,6 +65,6 @@ export const ProductDetails: FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };

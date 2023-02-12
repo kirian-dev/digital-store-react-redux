@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { RegisterForm } from '../components/RegisterForm';
 import { useNavigate } from 'react-router-dom';
+import { RegisterForm } from '../components/RegisterForm';
 import { useTypedSelector } from '@/shared/hooks/useTypedSelector';
 import { Loader } from '@/components/ui/loader';
 

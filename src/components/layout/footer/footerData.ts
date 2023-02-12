@@ -1,6 +1,6 @@
 export const footerDataHome: string[] = ['Services', 'Products', 'About', 'Pricing', 'Partners'];
 export const footerDataUser: { title: string; link?: string }[] = [
-  { title: 'Sign in', link: '/login' },
+  { title: 'Sign in', link: '/auth/login' },
   {
     title: 'New Account',
     link: '/register',

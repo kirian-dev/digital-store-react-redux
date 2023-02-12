@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import produce from 'immer';
 import { CartState } from './cart.interface';
 import { IProduct } from '@/types/product.interface';
 
@@ -20,19 +21,22 @@ const slice = createSlice({
           }
           return item;
         });
-        return { ...state, items: newItems, total: state.total + action.payload.price };
+        const total = (state.total + action.payload.price).toFixed(2);
+        return { ...state, items: newItems, total: parseFloat(total) };
       }
+      const total = (state.total + action.payload.price).toFixed(2);
       return {
         ...state,
         items: [...state.items, { ...action.payload, quantity: 1 }],
-        total: state.total + action.payload.price,
+        total: parseFloat(total),
       };
     },
     removeFromCart: (state, action: PayloadAction<IProduct>) => {
       const existingItem = state.items.find((item) => item.id === action.payload.id);
       if (existingItem && existingItem.quantity) {
         existingItem.quantity -= 1;
-        state.total -= action.payload.price;
+        const total = (state.total - action.payload.price).toFixed(2);
+        state.total = parseFloat(total);
         if (existingItem.quantity === 0) {
           state.items = state.items.filter((item) => item.id !== action.payload.id);
         }
@@ -43,7 +47,8 @@ const slice = createSlice({
       if (existingItemIndex >= 0) {
         const existingItem = state.items[existingItemIndex];
         state.items.splice(existingItemIndex, 1);
-        state.total -= existingItem.price * (existingItem.quantity || 1);
+        const total = (state.total - existingItem.price * (existingItem.quantity || 1)).toFixed(2);
+        state.total = parseFloat(total);
       }
     },
   },

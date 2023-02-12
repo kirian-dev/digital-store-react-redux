@@ -1,13 +1,12 @@
-import { useAction } from '@/shared/hooks/useAction';
 import { FC } from 'react';
 import { AiFillGoogleSquare } from 'react-icons/ai';
+import { useAction } from '@/shared/hooks/useAction';
 
 export const GoogleButton: FC<{ text: string; onSuccess: () => void }> = ({ text, onSuccess }) => {
   const { googleSignIn } = useAction();
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    await googleSignIn();
-    onSuccess();
+    googleSignIn(onSuccess);
   };
   return (
     <button

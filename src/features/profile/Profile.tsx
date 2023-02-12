@@ -16,7 +16,7 @@ export const Profile: FC = () => {
     setTimeout(() => {
       removeFromLocalStorage('cart');
       window.location.assign('/products');
-    }, 10000);
+    }, 5000);
   };
 
   const [isShowConfetti, setIsShowConfetti] = useState(false);
@@ -27,9 +27,9 @@ export const Profile: FC = () => {
       <p className="text-lg mb-6">Name: {user?.name || '-'}</p>
       <div className="mt-10">
         <h2 className="text-xl font-bold mb-6">Order Information</h2>
-        {total > 0 ? (
+        {total >= 1 ? (
           <>
-            <p className="text-lg mb-4">$Total: {total.toFixed(2)}</p>
+            <p className="text-lg mb-4">Total: ${total.toFixed(2)}</p>
             <button
               className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
               onClick={handleClickPay}

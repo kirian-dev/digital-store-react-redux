@@ -8,7 +8,8 @@ export interface IUserState {
   isLoading: boolean;
 }
 
-export interface IEmailPassword {
+export interface IAuth {
   email: string;
   password: string;
+  onSuccess: () => void;
 }
