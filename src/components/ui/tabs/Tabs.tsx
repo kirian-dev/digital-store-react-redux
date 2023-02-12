@@ -9,7 +9,7 @@ interface TabsProps {
 
 export const Tabs: FC<TabsProps> = ({ items, activeId, onClick }) => (
   <div className="border-b border-gray-200">
-    <div className="flex justify-center">
+    <div className="flex justify-center flex-wrap md:flex-nowrap">
       <Tab key="all" isActive={activeId === 'all'} onClick={() => onClick('all')}>
         All
       </Tab>

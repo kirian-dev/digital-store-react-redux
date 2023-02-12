@@ -65,12 +65,10 @@ export const Footer: FC = () => {
       <div className="bg-gray-100 pt-2 ">
         <div
           className="flex pb-5 px-3 m-auto pt-5 border-t text-gray-800 text-sm flex-col
-      md:flex-row max-w-6xl"
+       max-w-6xl"
         >
-          <div className="mt-2  mx-auto">
-            © Copyright 2023. All Rights Reserved.
-            <span className='ml-1'>Developed by Kirill Polozenko using react/redax</span>
-          </div>
+          <div className="mx-auto">Developed by Kirill Polozenko</div>
+          <div className="mt-2  mx-auto">© Copyright 2023. All Rights Reserved.</div>
         </div>
       </div>
     </footer>

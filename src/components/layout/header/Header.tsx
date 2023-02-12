@@ -14,11 +14,9 @@ export const Header: FC = () => {
   const { user } = useAuth();
   return (
     <header className="header z-50">
-      <div>
-        <Link to="/" className="">
-          <img src={logo} alt="" className="header__icon" />
+        <Link to="/" className="header__icon">
+          <img src={logo} alt="" className="" />
         </Link>
-      </div>
       <ul className="flex justify-between">
         {menuList.map((item, idx) => (
           <li className="mr-6 text-xl hover:scale-105 hover:text-gray-400" key={idx}>

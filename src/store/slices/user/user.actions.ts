@@ -11,7 +11,7 @@ export const register = createAsyncThunk(
       toastr.success('Registration', 'Completed successfully');
       console.log('response', response);
       return response;
-    } catch (error) {
+    } catch (error: any) {
       toastr.error(error.customData._tokenResponse.error.message, 'Registration');
     }
   }
@@ -22,7 +22,7 @@ export const login = createAsyncThunk('auth/login', async ({ email, password }: 
     const response = await AuthService.login(email, password);
     toastr.success('Login', 'Completed successfully');
     return response;
-  } catch (error) {
+  } catch (error: any) {
     toastr.error(error.customData._tokenResponse.error.message, 'Login');
   }
 });
@@ -31,7 +31,7 @@ export const googleSignIn = createAsyncThunk('auth/google', async () => {
     const response = await AuthService.googleSignIn();
     toastr.success('Login', 'Completed successfully');
     return response;
-  } catch (error) {
+  } catch (error: any) {
     toastr.error(error.customData._tokenResponse.error.message, 'Google sign in');
   }
 });

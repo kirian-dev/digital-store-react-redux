@@ -8,6 +8,11 @@
   &__icon {
     height: 70px;
     width: 70px;
+    display: none;
+
+    @media screen and (min-width: 579px) {
+      display: block;
+    }
   }
 
   &__cart-icon {

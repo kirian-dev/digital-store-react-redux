@@ -3,11 +3,9 @@ import Confetti from 'react-confetti';
 import { useAuth } from '@/shared/hooks/useAuth';
 import { useTypedSelector } from '@/shared/hooks/useTypedSelector';
 import { useWindowSize } from '@/shared/hooks/useWindowSize';
-import { useNavigate } from 'react-router-dom';
 import { removeFromLocalStorage } from '@/shared/helpers/removeFromLocalStorage';
 
 export const Profile: FC = () => {
-  const navigate = useNavigate();
   const { user } = useAuth();
   const total = useTypedSelector((state) => state.cart.total);
   const { width, height } = useWindowSize();
@@ -17,7 +15,7 @@ export const Profile: FC = () => {
 
     setTimeout(() => {
       removeFromLocalStorage('cart');
-      navigate('/products');
+      window.location.assign('/products');
     }, 10000);
   };
 

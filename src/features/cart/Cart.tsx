@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { CartItem } from './components/CartItem';
 import { useTypedSelector } from '@/shared/hooks/useTypedSelector';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAction } from '@/shared/hooks/useAction';
 import { toastr } from 'react-redux-toastr';
 import Confetti from 'react-confetti';
@@ -11,7 +11,6 @@ import { Modal } from '@/components/ui/modal';
 import { removeFromLocalStorage } from '@/shared/helpers/removeFromLocalStorage';
 
 export const Cart: FC = () => {
-  const navigate = useNavigate();
   const items = useTypedSelector((state) => state.cart.items);
   const total = useTypedSelector((state) => state.cart.total);
 
@@ -34,7 +33,7 @@ export const Cart: FC = () => {
       setIsShowConfetti(!isShowConfetti);
       setTimeout(() => {
         removeFromLocalStorage('cart');
-        navigate('/');
+        window.location.assign('/products');
       }, 10000);
     }
   };

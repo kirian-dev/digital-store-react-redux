@@ -19,10 +19,5 @@ body {
   height: 100%;
   background-color: #f8f8f8;
   color: #525252;
-}
-
-@mixin display-flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow-x: hidden;
 }
