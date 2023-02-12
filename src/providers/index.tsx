@@ -5,8 +5,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ReduxToastr from 'react-redux-toastr';
 import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from '@/store/store';
 import { Loader } from '@/components/ui/loader';
+import { persistor, store } from '../store';
 const ErrorFallback = () => {
   return (
     <div

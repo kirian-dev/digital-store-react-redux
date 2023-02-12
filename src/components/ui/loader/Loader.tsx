@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import './LoadingSpinner.scss';
+import './Loader.scss';
 
 export const Loader: FC = () => {
   return (

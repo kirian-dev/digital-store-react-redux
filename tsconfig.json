@@ -26,7 +26,8 @@
       "@/lib/*": ["lib/*"],
       "@/types/*": ["types/*"],
       "@/store/*": ["store/*"],
-      "@/configs/*": ["configs/*"]
+      "@/configs/*": ["configs/*"],
+      "@/features/*": ["features/*"]
     }
   },
   "include": ["src", "**/*.ts", "**/*.tsx"],

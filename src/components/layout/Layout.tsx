@@ -1,5 +1,9 @@
 import { FC } from 'react';
 import { Head } from '../head';
+import { Header } from './header/Header';
+import { Footer } from './footer/Footer';
+
+import './Layout.scss';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -9,14 +13,15 @@ type LayoutProps = {
 export const Layout: FC<LayoutProps> = ({ children, title }) => {
   return (
     <>
-      <Head title={title} />
-      
-      <div className="">
-        <div className="">
-          <h1 className="">{title}</h1>
-        </div>
-        <div className="">{children}</div>
+      <div className="layout container">
+        <Head title={title} />
+        <Header />
+        <main className="">
+          <div className="layout__container">{children}</div>
+        </main>
       </div>
+
+      <Footer />
     </>
   );
 };
