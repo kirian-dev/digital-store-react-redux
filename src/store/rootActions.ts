@@ -1,5 +1,5 @@
-import * as userActions from './user/user.actions'
+import { cartActions } from "./slices/cartSlice";
 
 export const allActions = {
-	...userActions,
+	...cartActions,
 }

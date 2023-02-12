@@ -1,4 +1,3 @@
-import { IProduct } from '@/types/product.interface';
 import { ChangeEvent, useState, useMemo } from 'react';
 import { mockDataProducts as products } from '@/shared/data/mockDataProducts';
 

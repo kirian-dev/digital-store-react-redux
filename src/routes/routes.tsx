@@ -7,6 +7,10 @@ const { ProductsRoutes } = lazyImport(
 	'ProductsRoutes'
 );
 
+const { Cart } = lazyImport(
+	() => import('@/features/cart'),
+	'Cart'
+);
 export const commonRoutes = [
   {
     path: '/',
@@ -15,6 +19,10 @@ export const commonRoutes = [
   {
     path: '/products/*',
     element: <ProductsRoutes />,
+  },
+  {
+    path: '/cart/*',
+    element: <Cart />,
   },
   {
     path: '*',

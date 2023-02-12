@@ -7,4 +7,5 @@ export interface IProduct {
   category: string;
   price: number;
   rating: number;
+  quantity?: number;
 }

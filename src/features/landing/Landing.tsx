@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Banner } from './components/banner/Banner';
-import { mockDataProducts as products } from '@/shared/data/mockDataProducts';
 import { ProductsList } from '@/components/ui/product-list';
+import { mockDataProducts as products } from '@/shared/data/mockDataProducts';
 export const Landing: FC = () => {
   return (
     <div>

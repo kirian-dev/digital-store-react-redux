@@ -12,8 +12,4 @@ export const menuList: IMenu[] = [
     title: 'Products',
     link: '/products',
   },
-  {
-    title: 'Contact',
-    link: '/contact',
-  },
 ];
