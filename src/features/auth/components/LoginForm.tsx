@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { GoogleButton } from './GoogleButton';
 export const LoginForm: FC = () => {
   return (
-    <div className="w-full max-w-sm mx-auto mt-16">
+    <div className="max-w-lg  mx-auto mt-16">
       <Formik
         initialValues={{ email: '', password: '', confirmPassword: '' }}
         validationSchema={Yup.object().shape({
@@ -17,8 +18,8 @@ export const LoginForm: FC = () => {
         }}
       >
         {({ isSubmitting }) => (
-          <Form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 h-96 grid place-content-center">
-            <div className="mb-4">
+          <Form className="bg-white shadow-md rounded px-4 pt-6 pb-8 mb-4 h-96 flex justify-center items-center flex-col">
+            <div className="mb-4 w-full px-4">
               <label className="block text-gray-700 font-medium mb-2" htmlFor="email">
                 Email
               </label>
@@ -30,7 +31,7 @@ export const LoginForm: FC = () => {
               />
               <ErrorMessage className="text-red-500 text-xs italic" name="email" component="div" />
             </div>
-            <div className="mb-4">
+            <div className="mb-4 w-full px-4">
               <label className="block text-gray-700 font-medium mb-2" htmlFor="password">
                 Password
               </label>
@@ -46,13 +47,18 @@ export const LoginForm: FC = () => {
                 component="div"
               />
             </div>
-            <button
-              className="bg-orange-500 hover:bg-orange-700 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
-              type="submit"
-              disabled={isSubmitting}
-            >
-              Log in
-            </button>
+            <div className="px-4 w-full">
+              <button
+                className="bg-orange-500 hover:bg-orange-700 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 w-full"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                Login
+              </button>
+            </div>
+            <div className="px-4 w-full mt-4">
+              <GoogleButton text="Login with Google" />
+            </div>
           </Form>
         )}
       </Formik>
