@@ -2,7 +2,6 @@ import { FC, useState, useEffect } from 'react';
 import { AiOutlineShopping, AiOutlineUser } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { Logout } from './Logout';
-import { useTypedSelector } from '@/shared/hooks/useTypedSelector';
 import { Dropdown } from '@/components/ui/dropdown';
 import { useAuth } from '@/shared/hooks/useAuth';
 import { menuList } from './menu-list';
