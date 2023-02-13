@@ -1,10 +1,17 @@
 import { IProduct } from '@/types/product.interface';
+import headphoneImage from '../../assets/images/headphone.webp';
+import phoneImage from '../../assets/images/phone.png';
+import cameraImage from '../../assets/images/camera.png';
+import laptopImage from '../../assets/images/laptop.png';
+import keyboardImage from '../../assets/images/keyboard.webp';
+import tvImage from '../../assets/images/tv.png';
+import airheadphoneImage from '../../assets/images/air-headphone.webp';
 
 export const mockDataProducts: IProduct[] = [
   {
     id: '1',
     name: ' Wireless  Headphones',
-    image: '/src/assets/images/headphone.webp',
+    image: headphoneImage,
     description:
       'Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working',
     brand: 'Beats',
@@ -15,7 +22,7 @@ export const mockDataProducts: IProduct[] = [
   {
     id: '2',
     name: 'iPhone 13 Pro 256GB',
-    image: '/src/assets/images/phone.png',
+    image: phoneImage,
     description:
       'Introducing the iPhone 13 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life',
     brand: 'Apple',
@@ -26,7 +33,7 @@ export const mockDataProducts: IProduct[] = [
   {
     id: '3',
     name: 'Cannon EOS 80D DSLR',
-    image: '/src/assets/images/camera.png',
+    image: cameraImage,
     description:
       'Characterized by versatile imaging specs, the Canon EOS 80D further clarifies itself using a pair of robust focusing systems and an intuitive design',
     brand: 'Cannon',
@@ -37,7 +44,7 @@ export const mockDataProducts: IProduct[] = [
   {
     id: '4',
     name: 'Laptop Pro White Version',
-    image: '/src/assets/images/laptop.png',
+    image: laptopImage,
     description:
       'The ultimate home entertainment center starts with Laptop. Whether you are into gaming, HD movies, television, music',
     brand: 'Sony',
@@ -48,7 +55,7 @@ export const mockDataProducts: IProduct[] = [
   {
     id: '5',
     name: 'Logitech G-Series',
-    image: '/src/assets/images/keyboard.webp',
+    image: keyboardImage,
     description: 'Get a better handle on your games with this Logitech  gaming keyboard.',
     brand: 'Logitech',
     category: 'Accessory',
@@ -58,7 +65,7 @@ export const mockDataProducts: IProduct[] = [
   {
     id: '6',
     name: 'Tv  3rd Generation',
-    image: '/src/assets/images/tv.png',
+    image: tvImage,
     description: 'Best IPTV Service. No Freeze',
     brand: 'Amazon',
     category: 'TV',
@@ -68,7 +75,7 @@ export const mockDataProducts: IProduct[] = [
   {
     id: '7',
     name: 'Airpods 2 Headphones',
-    image: '/src/assets/images/air-headphone.webp',
+    image: airheadphoneImage,
     description:
       'Airpods 2 Headphone High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working',
     brand: 'Apple',
