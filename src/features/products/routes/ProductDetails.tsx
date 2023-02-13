@@ -28,7 +28,7 @@ export const ProductDetails: FC = () => {
           <img
             alt={product.name}
             className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
-            src={`/${product.image}`}
+            src={`${product.image}`}
           />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 className="text-sm title-font text-gray-500 tracking-widest">{product.category}</h2>

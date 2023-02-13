@@ -14,7 +14,7 @@ export const Register: FC = () => {
       {isLoading ? (
         <Loader className="m-0" />
       ) : (
-        <RegisterForm onSuccess={() => navigate('/my/profile')} />
+        <RegisterForm onSuccess={() => navigate('/#/my/profile')} />
       )}
     </section>
   );

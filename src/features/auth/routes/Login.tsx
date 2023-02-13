@@ -14,7 +14,7 @@ export const Login: FC = () => {
       {isLoading ? (
         <Loader className="mt-0" />
       ) : (
-        <LoginForm onSuccess={() => navigate('/my/profile')} />
+        <LoginForm onSuccess={() => navigate('/#/my/profile')} />
       )}
     </section>
   );
