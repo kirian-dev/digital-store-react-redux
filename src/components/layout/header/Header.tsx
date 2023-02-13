@@ -10,7 +10,6 @@ import logo from '@/assets/images/logo.png';
 import './Header.scss';
 
 export const Header: FC = () => {
-  const { items } = useTypedSelector((state) => state.cart);
   const { user } = useAuth();
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
   const toggleDropdown = () => {
@@ -32,7 +31,6 @@ export const Header: FC = () => {
       <div className="flex">
         <Link to="/cart" type="button" className="header__cart-icon mr-5">
           <AiOutlineShopping />
-          <span className="header__cart-item-qty">{items?.length}</span>
         </Link>
         <Dropdown
           isOpenDropdown={isOpenDropdown}

@@ -3,7 +3,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { ErrorBoundary } from 'react-error-boundary';
 import { HelmetProvider } from 'react-helmet-async';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { Loader } from '@/components/ui/loader';
 import { persistor, store } from '../store';
