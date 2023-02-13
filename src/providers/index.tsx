@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ReactNode, Suspense } from 'react';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -21,12 +21,12 @@ const ErrorFallback = () => {
 };
 
 interface MainProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const MainProvider = ({ children }: MainProviderProps) => {
   return (
-    <React.Suspense fallback={<Loader className="mb-20" />}>
+    <Suspense fallback={<Loader className="mb-20" />}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <HelmetProvider>
           <Provider store={store}>
@@ -37,6 +37,6 @@ export const MainProvider = ({ children }: MainProviderProps) => {
           </Provider>
         </HelmetProvider>
       </ErrorBoundary>
-    </React.Suspense>
+    </Suspense>
   );
 };
