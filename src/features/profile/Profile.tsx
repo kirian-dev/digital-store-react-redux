@@ -15,7 +15,7 @@ export const Profile: FC = () => {
 
     setTimeout(() => {
       removeFromLocalStorage('cart');
-      window.location.assign('/products');
+      window.location.assign('/#/products');
     }, 5000);
   };
 
